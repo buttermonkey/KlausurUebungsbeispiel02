@@ -4,8 +4,28 @@ public class DemoApp {
 
 	public static void main(String[] args) {
 		
+		PersonManager personManager = new PersonManager();
+		for (int i = 0; i < 100; i++) {
+			personManager.add(createTestPerson());
+		}
 
+		personManager.doAnalysis(new GenderAnalyzer());
 
+		CountryAnalyzer countryAnalyzer = new CountryAnalyzer();
+		personManager.doAnalysis(countryAnalyzer);
+
+		System.out.println();
+		System.out.println("countryAnalyzer = " + countryAnalyzer.getResult());
+
+		System.out.println();
+		personManager.doAnalysis(new MaxSalaryAnalyzer());
+
+		System.out.println();
+		BMIAnalyzer	bmiAnalyzer = new BMIAnalyzer();
+		personManager.doAnalysis(bmiAnalyzer);
+
+		System.out.println();
+		BMIAnalyzer.printResult(bmiAnalyzer.getResult());
 	}
 	
 	
