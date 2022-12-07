@@ -2,6 +2,7 @@ package org.campus02.social;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 public class SocialNetwork {
@@ -24,7 +25,25 @@ public class SocialNetwork {
 	
 	
 	//TODO 1: implementieren Sie hier die rekursive Methode lt. Angabe
-	
+	public ArrayList<User> findAllFriends(User user, int level, int maxDepth) {
+		ArrayList<User> friends = new ArrayList<>();
+		if (level > maxDepth)
+			return friends;
+
+		if (level == 0) {
+			friends.add(user);
+		}
+
+		for (User friend : user.getFriends()) {
+			ArrayList<User> additionalFriends = findAllFriends(friend, level > 0 ? level - 1 : 0, maxDepth - 1);
+			for (User additionalFriend : additionalFriends) {
+				if (!friends.contains(additionalFriend))
+					friends.add(additionalFriend);
+			}
+		}
+
+		return friends;
+	}
 	
 	
 	

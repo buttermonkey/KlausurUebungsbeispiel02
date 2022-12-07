@@ -6,13 +6,15 @@ public class DemoSN {
 		
 		SocialNetwork sn = SocialNetwork.generateDemoNetwork();
 		
-		//TODO 1: geben Sie alle User des Social Networks basierend
-		//auf Ihrer geschriebenen .toString() Methode aus
-	
-		//TODO 2: probieren Sie die implementierte rekursive Methode
-		//der Klasse SocialNetwork für verschiedene Benutzer und
-		//Werte für maxDepth aus.
-		
+		for (User user : sn.getUsers()) {
+			System.out.println(user);
+		}
+
+		System.out.println();
+
+		for (User user : sn.findAllFriends(sn.getUsers().get(1), 1, 1)) {
+			System.out.println(user);
+		}
 	}
 	
 }
